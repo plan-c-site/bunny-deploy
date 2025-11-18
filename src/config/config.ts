@@ -57,6 +57,7 @@ export const getPullZoneConfig = async () => {
     inputName: "retry-limit",
     inputOptions: { required: false },
     transformInput: async (input: string) => {
+      throw new Error("OH I HAVE AN INPUT: " + input);
       const value = Number(input);
       if (!value || value < 1) return 3; // defaulting to 3 retries
       return value;
