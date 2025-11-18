@@ -16,7 +16,9 @@ import {
   removeEndSlash,
   transformDirectoryToUploadInput,
 } from "@/config/transformers.js";
-import { logDebug } from "@/logger.js";
+import { logDebug, logError } from "@/logger.js";
+
+logError("Definitely loading the right version");
 
 export const getSecret = async (secretName: string) => {
   const secret = getInput(secretName, { required: true });
@@ -36,6 +38,7 @@ export const getFeatureFlags = async () => {
 
 export const getPullZoneConfig = async () => {
   logDebug("Retrieving pullZoneConfig");
+  logError("Definitely!");
   const accessKey = await getSecret("access-key");
   const pullZoneId = await getInputWrapper({
     inputName: "pull-zone-id",
